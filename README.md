@@ -4,8 +4,7 @@
 1. Install Docker Desktop, Node.js 20, Git, VS Code.
 2. Clone repo and create `.env` from `.env.example`. Add your **data.gov.in** API key.
 3. `docker compose up -d --build`
-4. In another terminal: `docker compose exec backend npx prisma migrate deploy && npm run seed`
-5. Open http://localhost:5173
+4. `docker compose exec backend npx prisma migrate deploy && npm run seed`
 
 ## Fetch Gujarat GeoJSON
 - Run `node scripts/fetch-geojson.js` once (or mount `data/gujarat-districts.geojson`).
