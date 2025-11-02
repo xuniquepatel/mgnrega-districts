@@ -14,7 +14,7 @@
 - Edit `OGD_RESOURCE_IDS` with district+monthly resource UUIDs.
 - The ETL runs every 6 hours and on server start (call `ingestAll()` if needed).
 
-## Accessibility & Low-literacy UX
+## Accessibility
 - Language toggle (EN/HI/GU)
 - Big numbers with simple captions
 - One-line audio summary via browser TTS
