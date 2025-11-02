@@ -6,14 +6,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY backend/package*.json ./
 RUN npm install
+
 COPY backend/prisma ./prisma
 RUN npx prisma generate
 
 COPY backend/tsconfig.json ./
 COPY backend/src ./src
 
+ENV VITE_API_URL=/api
+COPY frontend ./frontend
+WORKDIR /app/frontend
+RUN npm install && npm run build
+
+WORKDIR /app
+RUN mkdir -p static && cp -r frontend/dist/* static/
+
 COPY data ./data
 
 RUN npm run build
+
 EXPOSE 8080
 CMD ["npm","start"]
