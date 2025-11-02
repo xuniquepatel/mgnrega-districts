@@ -1,6 +1,6 @@
-# MGNREGA District Dashboard — Gujarat
+# MGNREGA District Dashboard - Gujarat
 
-## Dev on Windows + VS Code
+## Development 
 1. Install Docker Desktop, Node.js 20, Git, VS Code.
 2. Clone repo and create `.env` from `.env.example`. Add your **data.gov.in** API key.
 3. `docker compose up -d --build`
@@ -30,5 +30,6 @@
 ## Notes
 - If OGD API is down, frontend still shows cached DB data and PWA cache.
 - API has rate limits; backend batches requests and caches responses in Redis.
+  
 ```
 
