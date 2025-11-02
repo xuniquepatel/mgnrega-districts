@@ -1,0 +1,71 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "linux-musl"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model State {
+  id        Int        @id @default(autoincrement())
+  code      String
+  name      String     @unique
+
+  districts District[] @relation("StateDistricts")
+}
+
+model District {
+  id       Int     @id @default(autoincrement())
+  stateId  Int
+  name     String
+  geomJson Json?
+
+  state    State   @relation("StateDistricts", fields: [stateId], references: [id], onDelete: Cascade)
+
+  metrics  Metric[] @relation("DistrictMetrics")
+
+  @@unique([stateId, name])
+}
+
+model Metric {
+  id                     Int       @id @default(autoincrement())
+
+  state                  String
+  district               String
+  fy                     String
+  month                  DateTime
+
+  persondaysTotal        Int?
+  householdsWorked       Int?
+  avgDaysPerHH           Float?
+  womenPersondaysShare   Float?
+  totalExpLakhs          Float?
+  wagesLakhs             Float?
+  materialLakhs          Float?
+  adminExpLakhs          Float?
+
+  jobcardsTotal          Int?
+  workersTotal           Int?
+
+  districtRelId          Int?
+  districtRel            District? @relation("DistrictMetrics", fields: [districtRelId], references: [id], onDelete: SetNull)
+
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  @@unique([state, district, fy, month], name: "state_district_fy_month")
+
+  @@index([district, fy, month])
+  @@index([state, fy, month])
+}
+
+
+model IngestLog {
+  id         Int      @id @default(autoincrement())
+  resourceId String
+  status     String
+  details    String?
+  createdAt  DateTime @default(now())
+}

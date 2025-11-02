@@ -1,0 +1,5 @@
+[
+  {"district":"Surat","fy":"2025-26","month":"2025-05-01","persondaysTotal":123456,"householdsWorked":45678,"avgDaysPerHH":18.4,"womenPersondaysShare":51.2},
+  {"district":"Surat","fy":"2025-26","month":"2025-06-01","persondaysTotal":132000,"householdsWorked":46200,"avgDaysPerHH":19.1,"womenPersondaysShare":52.0},
+  {"district":"Vadodara","fy":"2025-26","month":"2025-06-01","persondaysTotal":98000,"householdsWorked":39000,"avgDaysPerHH":17.0,"womenPersondaysShare":49.5}
+]
