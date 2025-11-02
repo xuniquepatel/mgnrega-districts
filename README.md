@@ -30,6 +30,4 @@
 ## Notes
 - If OGD API is down, frontend still shows cached DB data and PWA cache.
 - API has rate limits; backend batches requests and caches responses in Redis.
-  
-```
 
