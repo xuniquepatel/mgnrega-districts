@@ -8,6 +8,7 @@
     "build": "tsc -p .",
     "start": "node dist/index.js",
     "seed": "node dist/db/seed.js",
+    "ingest": "node dist/runIngest.js",
     "prisma:db-push": "prisma db push",
     "prisma:generate": "prisma generate"
   },
