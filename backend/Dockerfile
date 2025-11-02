@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl ca-certificates curl && rm -rf /var/lib/apt/lists/*
 
 COPY backend/package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY backend/prisma ./prisma
 RUN npx prisma generate
@@ -18,7 +18,7 @@ RUN npm run build
 ENV VITE_API_URL=/api
 COPY frontend ./frontend
 WORKDIR /app/frontend
-RUN npm ci && npm run build
+RUN npm install && npm run build
 
 WORKDIR /app
 RUN mkdir -p static && cp -r frontend/dist/* static/
