@@ -25,5 +25,8 @@ RUN mkdir -p static && cp -r frontend/dist/* static/
 
 COPY data ./data
 
+COPY backend/start.sh ./start.sh
+RUN chmod +x ./start.sh
+
 EXPOSE 8080
-CMD ["npm","start"]
+CMD ["./start.sh"]
